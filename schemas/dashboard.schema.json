@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DashboardData",
+  "type": "object",
+  "required": [
+    "domain",
+    "carbonEmission",
+    "riskScore",
+    "recommendation"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "carbonEmission": {
+      "type": "number"
+    },
+    "riskScore": {
+      "type": "number"
+    },
+    "recommendation": {
+      "type": "string"
+    }
+  }
+}
