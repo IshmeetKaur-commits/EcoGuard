@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PrivacyData",
+  "type": "object",
+  "required": [
+    "domain",
+    "riskScore",
+    "issues"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "riskScore": {
+      "type": "number"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

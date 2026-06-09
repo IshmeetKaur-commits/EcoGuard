@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CarbonData",
+  "type": "object",
+  "required": [
+    "domain",
+    "visitTime",
+    "carbonEmission",
+    "energyUsed"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "visitTime": {
+      "type": "number"
+    },
+    "carbonEmission": {
+      "type": "number"
+    },
+    "energyUsed": {
+      "type": "number"
+    }
+  }
+}
