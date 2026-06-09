@@ -79,16 +79,22 @@ export function calculateCarbon(browsingData) {
     
     const minutes = visitTime / 60;
 
-   const finalEnergyUsed =
-    Number(
-        energyUsed.toFixed(2)
-    );
+    
+const energyUsed =
+    minutes *
+    ENERGY_RATES[websiteType];
 
     const carbonEmission =
     Number(
         (energyUsed * CARBON_FACTOR)
             .toFixed(2)
     );
+   const finalEnergyUsed =
+    Number(
+        energyUsed.toFixed(2)
+    );
+
+
 
 return {
     domain,
