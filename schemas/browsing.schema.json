@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BrowsingData",
+  "type": "object",
+  "required": [
+    "domain",
+    "url",
+    "visitTime",
+    "timestamp"
+  ],
+  "properties": {
+    "domain": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "visitTime": {
+      "type": "number"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  }
+}
