@@ -54,6 +54,7 @@ function getWebsiteType(domain) {
 
 const ENERGY_RATES = {
 
+    
     video: 0.08,
 
     social: 0.05,
@@ -65,6 +66,8 @@ const ENERGY_RATES = {
     default: 0.04
 };
 
+const CARBON_FACTOR = 0.475;
+
 export function calculateCarbon(browsingData) {
 
     const {
@@ -75,14 +78,22 @@ export function calculateCarbon(browsingData) {
     const websiteType = getWebsiteType(domain);
     
     const minutes = visitTime / 60;
-    const energyUsed =
-    minutes *
-    ENERGY_RATES[websiteType];
 
-    return {
-        domain,
-        visitTime,
-        carbonEmission: 0,
-        energyUsed
-    };
+   const finalEnergyUsed =
+    Number(
+        energyUsed.toFixed(2)
+    );
+
+    const carbonEmission =
+    Number(
+        (energyUsed * CARBON_FACTOR)
+            .toFixed(2)
+    );
+
+return {
+    domain,
+    visitTime,
+    carbonEmission,
+    energyUsed: finalEnergyUsed
+};
 }
