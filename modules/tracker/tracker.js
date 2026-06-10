@@ -1,0 +1,1 @@
+function groupVisitsByDomain(visits){const map={};visits.forEach(v=>{if(!v.domain)return;if(!map[v.domain])map[v.domain]={domain:v.domain,totalTime:0,visits:0,lastUrl:v.url};map[v.domain].totalTime+=v.visitTime||0;map[v.domain].visits+=1;map[v.domain].lastUrl=v.url;});return Object.values(map).sort((a,b)=>b.totalTime-a.totalTime)}
