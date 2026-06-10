@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DashboardData",
+  "type": "object",
+  "required": [
+    "totalCarbonEmission",
+    "totalEnergyUsed",
+    "topWebsites",
+    "dailyTotal",
+    "weeklyTotal"
+  ],
+  "properties": {
+    "totalCarbonEmission": {
+      "type": "number"
+    },
+    "totalEnergyUsed": {
+      "type": "number"
+    },
+    "topWebsites": {
+      "type": "array"
+    },
+    "dailyTotal": {
+      "type": "number"
+    },
+    "weeklyTotal": {
+      "type": "number"
+    }
+  }
+}
