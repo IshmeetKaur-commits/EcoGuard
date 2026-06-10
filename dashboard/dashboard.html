@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoGuard Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <img src="../icons/icon48.png" alt="EcoGuard Icon">
+                <h2>EcoGuard</h2>
+            </div>
+
+            <nav>
+                <a class="active" href="#dashboard-section">Dashboard</a>
+                <a href="#carbon-section">Carbon</a>
+                <a href="#privacy-section">Privacy</a>
+                <a href="#ai-insights-section">AI Insights</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Member 4</p>
+                <small>AI + Dashboard</small>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="topbar" id="dashboard-section">
+
+                <div>
+                    <h1>EcoGuard Intelligence</h1>
+
+                    <p>
+                        Real browsing data from Chrome Extension APIs
+                    </p>
+                </div>
+
+                <div class="top-actions">
+                    <button id="refresh-btn">Refresh Data</button>
+                    <button id="clear-btn">Clear Data</button>
+                    <button id="theme-toggle-btn">Light Mode</button>
+                    <button id="export-btn">Export PDF</button>
+                </div>
+
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero-card">
+
+                <div>
+                    <p class="eyebrow">Live Session</p>
+
+                    <h2>Your Digital Impact Score</h2>
+
+                    <p class="hero-text">
+                        EcoGuard tracks active tabs, time spent, request activity,
+                        carbon impact, privacy risk, and gives AI-based suggestions.
+                    </p>
+                </div>
+
+                <div class="score-ring">
+
+                    <svg viewBox="0 0 180 180">
+                        <circle
+                            class="ring-bg"
+                            cx="90"
+                            cy="90"
+                            r="78">
+                        </circle>
+
+                        <circle
+                            class="ring-fill"
+                            cx="90"
+                            cy="90"
+                            r="78">
+                        </circle>
+                    </svg>
+
+                    <div class="score-center">
+                        <span id="eco-score-value">0</span>
+                        <small>Eco Score</small>
+                    </div>
+
+                </div>
+
+                <div class="score-status">
+                    <span
+                        id="risk-badge"
+                        class="risk-badge badge-low">
+                        LOW
+                    </span>
+
+                    <p id="eco-score-tagline">
+                        Waiting for browsing data...
+                    </p>
+                </div>
+
+            </section>
+
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <span class="stat-icon">🌍</span>
+
+                    <p>Carbon Emission</p>
+
+                    <h3>
+                        <span id="carbon-value">0</span>
+                        g CO₂
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">⚡</span>
+
+                    <p>Energy Used</p>
+
+                    <h3>
+                        <span id="energy-value">0</span>
+                        Wh
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🔐</span>
+
+                    <p>Privacy Risk</p>
+
+                    <h3>
+                        <span id="risk-value">0</span>
+                        / 100
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🧭</span>
+
+                    <p>Tracked Websites</p>
+
+                    <h3>
+                        <span id="site-count">0</span>
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">📅</span>
+
+                    <p>Daily Carbon Total</p>
+
+                    <h3>
+                        <span id="daily-carbon">0</span>
+                        g CO₂
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">📆</span>
+
+                    <p>Weekly Carbon Total</p>
+
+                    <h3>
+                        <span id="weekly-carbon">0</span>
+                        g CO₂
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">💸</span>
+
+                    <p>Most Expensive Site</p>
+
+                    <h3>
+                        <span id="most-expensive-site">No data</span>
+                    </h3>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">🤖</span>
+
+                    <p>AI Confidence</p>
+
+                    <h3>
+                        <span id="ai-confidence">87</span>%
+                    </h3>
+                </div>
+
+            </section>
+
+            <!-- Charts -->
+            <section class="content-grid">
+
+                <div
+                    class="panel"
+                    id="carbon-section">
+
+                    <h3>Carbon Emission</h3>
+
+                    <div class="chart-box">
+                        <canvas id="carbon-chart"></canvas>
+                    </div>
+
+                </div>
+
+                <div
+                    class="panel"
+                    id="privacy-section">
+
+                    <h3>Privacy Risk</h3>
+
+                    <div class="chart-box">
+                        <canvas id="privacy-chart"></canvas>
+                    </div>
+
+                </div>
+
+                <div
+                    class="panel wide"
+                    id="website-time-section">
+
+                    <h3>Top Website Time</h3>
+
+                    <div class="chart-box large">
+                        <canvas id="trend-chart"></canvas>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Privacy + Top Sites -->
+            <section class="bottom-grid">
+
+                <div class="panel">
+
+                    <h3>Active Privacy Issues</h3>
+
+                    <ul
+                        id="issue-list"
+                        class="issue-list">
+                    </ul>
+
+                </div>
+
+                <div class="panel">
+
+                    <h3>Most Expensive Websites</h3>
+
+                    <div id="top-sites-list"></div>
+
+                </div>
+
+            </section>
+
+            <!-- AI Insights -->
+            <section
+                class="ai-card"
+                id="ai-insights-section">
+
+                <div class="ai-icon">🤖</div>
+
+                <div class="ai-content">
+
+                    <p class="eyebrow">AI Recommendations</p>
+
+                    <h3>Personalised Suggestions</h3>
+
+                    <p id="reco-text">
+                        Open a few websites, then refresh this dashboard.
+                    </p>
+
+                    <div class="ai-insights-grid">
+
+                        <div class="insight-box">
+                            <span class="insight-label">
+                                Most visited
+                            </span>
+
+                            <strong id="ai-most-visited">
+                                Loading...
+                            </strong>
+                        </div>
+
+                        <div class="insight-box">
+                            <span class="insight-label">
+                                Highest carbon
+                            </span>
+
+                            <strong id="ai-highest-carbon">
+                                Loading...
+                            </strong>
+                        </div>
+
+                        <div class="insight-box">
+                            <span class="insight-label">
+                                Privacy level
+                            </span>
+
+                            <strong id="ai-privacy-level">
+                                Loading...
+                            </strong>
+                        </div>
+
+                        <div class="insight-box">
+                            <span class="insight-label">
+                                Reduction potential
+                            </span>
+
+                            <strong id="ai-reduction-potential">
+                                0%
+                            </strong>
+                        </div>
+
+                    </div>
+
+                    <div class="ai-prediction-panel">
+
+                        <div>
+                            <h4>📈 AI Prediction Graph</h4>
+
+                            <p>
+                                Forecast based on your current browsing pattern.
+                            </p>
+                        </div>
+
+                        <div class="ai-prediction-stats">
+                            <span>
+                                Tomorrow:
+                                <strong id="ai-tomorrow-carbon">
+                                    0g
+                                </strong>
+                            </span>
+
+                            <span>
+                                Weekly:
+                                <strong id="ai-weekly-carbon">
+                                    0g
+                                </strong>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="ai-chart-box">
+                        <canvas id="ai-insights-chart"></canvas>
+                    </div>
+
+                    <ul
+                        class="ai-points"
+                        id="ai-points">
+                    </ul>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="chart.js"></script>
+
+    <script src="../modules/tracker/tracker.js"></script>
+
+    <script src="../modules/carbon/carbonCalculator.js"></script>
+
+    <script src="../modules/privacy/privacyAnalyzer.js"></script>
+
+    <script src="../modules/ai/aiEngine.js"></script>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
